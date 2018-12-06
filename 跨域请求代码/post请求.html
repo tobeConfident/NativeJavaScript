@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="user-info"></div>
+	<script>
+		function submitData(){
+			var xhr = createXHR();
+			xhr.onreadyStatechange = function(){
+				if(xhr.readyState == 4){
+					if((xhr.status>=200 && xhr.status<300) || xhr.status==304){
+						alert(xhr.responseText);
+					}else{
+						alert('error '+ xhr.status);
+					}
+				}
+			};
+			xhr.open('post','postexample.php',true);
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencode");
+			var form = document.getElementById("user-info");
+			// xhr.send(serialize(form)); 
+			xhr.send(1); 
+		}
+	</script>
+</body>
+</html>

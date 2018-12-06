@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var n = readInt();
+		var arr=[];
+		for(i=0;i<n;i++){
+		    arr[i]=readInt();
+		}
+		var obj = {};
+		for(var i=0;i<n;i++){
+			obj[arr[i]] = (obj[arr[i]] + 1) || 1;
+		}
+		var brr = [];
+		for(var key in obj){
+			brr.push(obj[key]);
+		}
+		brr.sort(function(a,b){
+			return a-b>0;
+		});
+		print(brr[0]);
+	</script>
+</body>
+</html>

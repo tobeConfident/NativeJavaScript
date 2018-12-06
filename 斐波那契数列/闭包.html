@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		const fb = function(n){
+			var arr = [2,3];
+			var f = function(n){
+				var res = arr[n];
+				if(typeof res != "number"){
+					arr[n] = f(n-1)+f(n-2);
+					res = arr[n];
+				}
+				return res;
+			}
+			return f;	
+		}();
+		fb(5);
+	</script>
+</body>
+</html>

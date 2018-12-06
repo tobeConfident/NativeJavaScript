@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" />
+	<input type="button" id="btn" value="检测"/>
+	<script>
+		var oBtn = document.getElementById('btn');
+		var oTxt = document.getElementById('txt');
+		oBtn.onclick = function(){
+			var reg = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/g;
+			if(reg.test(oTxt.value)){
+				alert('true');
+			}else{
+				alert('false');
+			}
+		};
+	</script>
+</body>
+</html>

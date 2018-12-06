@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body onload = "change()">
+	<select id="pro" onchange="change()">
+		<option value="请选择省">请选择省</option>
+		<option value="北京">北京</option>
+		<option value="辽宁">辽宁</option>
+		<option value="上海">上海</option>
+	</select>
+	<select id="city"></select>
+	<script>
+		var province = {
+			'请选择省':['请选择市'],
+			'北京':['北京市'],
+			'辽宁':['沈阳市','本溪市','锦州市','朝阳市','葫芦岛市'],
+			'上海':['上海市']
+		};
+		function change(){
+			var pro = $('pro'); //获取一级菜单
+			var city = $('city'); //获取二级菜单
+			var sel = pro.options[pro.selectedIndex].value; //获取一级菜单中被选中的值
+			while (city.options.length){
+	    		city.remove(0);            //清空二级菜单
+	  		}
+			var sels = province[sel];     //获取被选中的一级菜单值下的数组
+			if(sels){            //将数组添加至二级菜单
+			    for (var i=0;i<sels.length;i++){
+			      var cit = new Option(sels[i],i);
+			      city.options.add(cit);
+			    }
+			  }
+			//定义获取标签函数
+			function $(dom){
+				return document.getElementById(dom);
+			}
+		}
+		
+	</script>
+</body>
+</html>

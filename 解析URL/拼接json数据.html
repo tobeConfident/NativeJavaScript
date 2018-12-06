@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var url = '//www.jb51.net:80/seo/?'; 
+		var data = { //一个json数据
+			'a':1,
+			'b':2,
+			'c':3
+		};
+		var arr = JSON.stringify(data); //将json数据转换为字符串格式
+		var len = arr.length; //获取字符串长度
+		var data1 = arr.substring(1,len-1); //截取字符串中不包括‘{}’部分
+		var data2 = data1.split(','); //以','分割字符串
+		var jsonArr = []; //创建一个新数组
+		for(var i=0;i<data2.length;i++){
+			str2 = data2[i].replace(/\"/g, ""); //去掉data2数据中每一项的""
+			var str3 = str2.replace(/:/,'='); //将str2数据中的每一项中':'替换为'='
+			jsonArr.push(str3); //将str3数据存入数组里面
+		}		
+		var result = url+jsonArr.join('&'); //将两个数据拼接起来
+		console.log(result); 
+	</script>
+</body>
+</html>

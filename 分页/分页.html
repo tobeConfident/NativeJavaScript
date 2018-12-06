@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#list{
+			width:500px;
+			border:1px solid blue;
+			color:red;
+		}
+		#list li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color:red;
+		}
+	</style>
+</head>
+<body onload = "goPage(1,10)">
+	<ul id="list">
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx1</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx2</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx3</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx4</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+		<li>xxx</li>
+	</ul>
+	<div align="right" id="barcon" style="width:65%"></div>
+	<script>
+		function goPage(currPN,pageSize){
+			var li = document.querySelectorAll('li');  //获取说有li节点
+			var len = li.length;	//li节点个数
+			var pno = currPN;  //当前页数
+			var pSize = pageSize; //一页多少条信息
+			//计算总页数
+			if((len/pSize)>parseInt(len/pSize)){
+				var totalPage = parseInt(len/pSize)+1;
+			}else{
+				var totalPage = parseInt(len/pSize);
+			}
+			//计算每页的起始和结束节点数
+			var start = (pno-1)*pSize+1;
+			var end = pno*pSize;
+			//遍历显示的li节点
+			for(var i=0;i<len;i++){
+				var iLen = li[i];
+				if(i>=start&&i<=end){
+					iLen.style.display = "block";
+				}else{
+					iLen.style.display = "none";
+				}
+			}
+			//添加下方提示
+		    var tempStr = "共"+len+"条记录 分"+ totalPage +"页 当前第 "+pno+" 页";
+		    if(pno>1){
+		        tempStr += "<a href=\"#\" onClick=\"goPage("+(1)+","+pSize+")\">首页</a>";
+		         tempStr += "<a href=\"#\" onClick=\"goPage("+(pno-1)+","+pSize+")\"><上一页</a>"
+		    }else{
+		        tempStr += "首页";
+		        tempStr += "<上一页";    
+		    }
+
+		    if(pno<totalPage){
+		        tempStr += "<a href=\"#\" onClick=\"goPage("+(pno+1)+","+pSize+")\">下一页></a>";
+		        tempStr += "<a href=\"#\" onClick=\"goPage("+(totalPage)+","+pSize+")\">尾页</a>";
+		    }else{
+		        tempStr += "下一页>";
+		        tempStr += "尾页";    
+		    }
+		    document.getElementById("barcon").innerHTML = tempStr;
+		}
+		
+		
+	</script>
+</body>
+</html>

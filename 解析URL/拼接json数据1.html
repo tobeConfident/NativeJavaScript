@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function addURLParam(url,name,value){ //3个参数，要添加参数的url,参数的名称,参数的值
+			url += (url.indexOf("?")==-1?"?":"&"); //判断url中是否有'?'
+			url += encodeURIComponent(name)+"="+encodeURIComponent(value); //拼接
+			return url; 
+		}
+		var url = "example.php"; 
+		var json = {
+			'name':111,
+			'value':222,
+			'key':333
+		};
+		for(var key in json){  
+			url = addURLParam(url,key,json[key]); //传参
+		}  
+ 	    console.log(url);
+	</script>
+</body>
+</html>

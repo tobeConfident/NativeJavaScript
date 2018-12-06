@@ -1,0 +1,30 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /> 
+<title>javascript链式调用 //www.jb51.net/</title> 
+<script type="text/javascript"> 
+function W(){ 
+    this.name="Wang Hongjian"; 
+    this.gender="male"; 
+} 
+W.prototype.sayHi=function(){ 
+alert("Hello,everybody\nMy name is " + this.name); 
+return this; 
+}; 
+W.prototype.doSomething=function(){ 
+    alert("I'm working"); 
+    return this; 
+} 
+W.prototype.sayGoodbye=function(){ 
+alert("Goodbye,everybody"); 
+return this; 
+}; 
+var w=new W(); 
+w.sayHi().doSomething().sayGoodbye(); 
+</script> 
+</head> 
+<body> 
+</body> 
+</html> 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width:50px;
+			height:30px;
+			line-height:30px;
+			text-align:center;
+			border-radius:5px;
+			float:left;
+			background: lightblue;
+			margin-left:10px;
+		}
+		.bac{
+			background: orange;
+		}
+
+	</style>
+</head>
+<body>
+	<div>红色</div>
+	<div>白色</div>
+	<div>蓝色</div>
+	<span id="data"></span>
+	<script>
+		var div = document.getElementsByTagName('div');
+		var data = document.getElementById('data');
+		var len = div.length;
+		for(let i=0;i<len;i++){
+			div[i].onclick = function(event){
+				var curr = event.target; //获取点击的当前节点
+				for(var k=0;k<len;k++){
+					div[k].className = div[k].className.replace('bac','').trim(); //移除所有的高亮
+				}
+				titOn(curr); //为当前节点添加高亮
+				data.innerHTML = curr.innerHTML;  //高亮数据添加至span中
+			}
+		}
+		function titOn(dom){
+			dom.className += 'bac';   //加高亮
+		}
+	</script>
+</body>
+</html>

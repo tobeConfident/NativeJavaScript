@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function argu(){
+			var args = Array.from(new Set(arguments));
+			// var args =[...arguments];
+			return args;
+		}
+		console.log(argu([1,11,2,2,2]));
+	</script>
+</body>
+</html>

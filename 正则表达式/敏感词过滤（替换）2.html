@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea value="" id="txt1" cols="30" rows="10"></textarea><br/>
+	<input type="button" value="转换" id="btn"><br/>
+	<textarea value="" id="txt2" cols="30" rows="10"></textarea>
+	<script>
+		var oTxt1 = document.getElementById('txt1');
+		var oTxt2 = document.getElementById('txt2');
+		var oBtn = document.getElementById('btn');
+		oBtn.onclick = function(){
+			var arr = ['妈','爸','我'];
+			for(let i=0;i<arr.length;i++){
+				var val = arr[i];
+				alert(val);
+				var reg = new RegExp(`${val}`,'g');
+				// oTxt2.value = oTxt1.value.replace(reg,'***');
+				if(oTxt1.value.match(reg)){
+					var a = oTxt1.value.replace(reg,'***');
+					oTxt2.value = a;
+				}
+			}
+		};
+	</script>
+</body>
+</html>

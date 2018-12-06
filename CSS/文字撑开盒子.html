@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<style>
+		.box{
+			display: box;
+			display: -webkit-box;
+			display: -moz-box;
+			display: -o-box;
+		}
+		.box1{
+			min-width:20%;
+			max-width:25%;
+			background:red;
+			margin-left:10%;
+			box-flex: 1.0;
+			-webkit-box-flex: 1.0;
+			-moz-box-flex: 1.0;
+			-o-box-flex: 1.0;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis; 
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1">aaa</div>
+		<div class="box1">aaaaaaaa</div>
+		<div class="box1">aaa</div>
+		<div class="box1">bbb</div>
+	</div>
+</body>
+</html>

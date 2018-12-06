@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		console.log(new Date().getTime());
+	  	var arr = [];
+	    for(let i=1;i<=22;i++){
+	    	var m = i%10;
+	    	var reg = new RegExp(`^${m}`,'g');
+	    	if(reg.test(i)){
+	    		arr.push(i);
+	    	}
+	    }
+	    console.log(arr);
+	    console.log(arr.length);
+	    // console.log(sum);
+	    console.log(new Date().getTime()); 
+	    
+	</script>
+</body>
+</html>
+
+

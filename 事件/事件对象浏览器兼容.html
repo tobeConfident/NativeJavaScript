@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#myBtn{
+			width:100px;
+			height:100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="myBtn"></div> -->
+	<script>
+		var EventUtil = {
+			addHandler:function(element,type,handler){
+				if(element.addEventListener){
+					element.addEventListener(type,handler,false);
+				}else if(element.attachEvent){
+					element.attachEvent("on"+type,handler);
+				}else{
+					element["on"+type]=handler;
+				}
+			},
+			getEvent:function(event){
+				return event ? event: window.event;
+			},
+			getTarget:function(event){
+				return event.target || event.srcElement;
+			},
+			preventDefault:function(event){
+				if(event.preventDefault){
+					event.preventDefault();
+				}else{
+					event.returnvalue = false;
+				}
+			},
+			removeHandler:function(element,type,handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type,handler,false);
+				}else if(element.detachEvent){
+					element.detachEvent(type,handler,false);
+				}else{
+					element["on"+type] = null;
+				}
+			},
+			stopPropagation:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();
+				}else{
+					event.cancleBubble = true;
+				}
+			},
+			getCharCode:function(event){
+				if(typeof event.charCode == 'number'){
+					return event.charCode;
+				}else{
+					return event.keyCode;
+				}
+			}
+		};
+		EventUtil.addHandler(window,"load",function(event){
+			var link = document.createElement('link');
+			link.type = "text/css";
+			link.rel = "stylesheet";
+			EventUtil.addHandler(link,"load",function(event){
+				alert('css loaded');
+			});
+			link.href = "express.css";
+			document.getElementByTagName("head")[0].appendChild(link);
+		});
+	</script>
+</body>
+</html>

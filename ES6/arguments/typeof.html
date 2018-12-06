@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		console.log(typeof arguments); //'undefined'
+		//arguments只能在函数内部使用
+		function argu(a){
+			console.log(a,Object.prototype.toString.call(arguments)); //判断数据类型：'object.prototype.toString.call()'
+			console.log(arguments[0],arguments[1]); //使用索引确定传入参数的值
+			console.log(typeof arguments[0]);
+		}
+		argu([1,2]);
+	</script>
+</body>
+</html>

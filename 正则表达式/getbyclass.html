@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="u11">
+		<li></li>
+		<li class="box"></li>
+		<li class="abox"></li>
+		<li class="box"></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+		function getByClass(oParent,sClass){
+			var ele = oParent.getElementsByTagName('*');
+			var arr = [];
+			var reg = new RegExp('\\b'+sClass+'\\b','i');
+			for(var i=0;i<ele.length;i++){
+				//if(ele[i].className==sClass)
+				if(reg.test(ele[i].className)){
+					arr.push(ele[i]);
+				}
+			}
+			return arr;
+		}
+		window.onload = function(){
+			var oUl=document.getElementById('u11');
+			var oBox = getByClass(oUl,'box');
+			for(var i=0;i<oBox.length;i++){
+				oBox[i].style.background='red';
+			}
+		};
+		
+	</script>
+</body>
+</html>

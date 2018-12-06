@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<title>Document</title>
+	<style>
+		body{
+			padding:0;
+			margin:0;
+		}
+		#list{
+			position:relative;
+			top:-40px;	
+			margin:0;
+			padding:0;
+		}
+		#reload ul li{
+			border-bottom: 1px solid #000;
+			list-style: none;
+			height:40px;
+			line-height: 40px;
+			text-align:center;
+		}
+		.div{
+			height:1000px;
+			width:100%;
+			background:#F00;
+			margin-top:500px;
+		}
+	</style>
+</head>
+<body>
+	<div id="reload">
+		<ul id="list">
+			<li id="promot">下拉刷新</li>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+	<!--滑动绑定元素结束-->
+	<div class="div"></div><!--页面元素-->
+	<script>
+		var reload = document.getElementById('reload');
+		var list = document.getElementById('list');
+		var promot = document.getElementById('promot');
+		var start = 0;
+		//触摸开始事件
+		reload.addEventListener('touchstart',function(event){
+			var touch = event.touches[0];
+			start = touch.pageY;
+		},false);
+		//触摸
+		reload.addEventListener('touchmove',function(event){
+			var touch = event.touches[0];
+			list.style.top = list.offsetTop+touch.pageY-start+'px';
+			start = touch.pageY;
+			promot.innerHTML = '松开刷新';
+		},false);
+		//结束
+		reload.addEventListener('touchend',function(event){
+			start = 0;
+			var top = list.offsetTop;
+			if(top>0){
+				var time = setInterval(function(){
+					list.style.top = list.offsetTop - 2 +'px';
+					if(list.offsetTop<=-40){
+						clearInterval(time);
+						location.reload();
+					}
+				},1);
+			}
+		},false);
+	</script>
+</body>
+</html>

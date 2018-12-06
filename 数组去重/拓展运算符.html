@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function f(arr){
+			var brr = [...new Set(arr)];
+			return brr;
+		}
+		console.log(f([1,1,1,2,3,2,3,4,4]));
+	</script>
+</body>
+</html>

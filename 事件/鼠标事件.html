@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			padding:0;
+		}
+		#mydiv{
+			width:100px;
+			height:100px;
+			background:red;
+		}	
+	</style>
+</head>
+<body>
+	<div id="mydiv"></div>
+	<script>
+		var EventUtil = {
+			addHandler:function(element,type,handler){
+				if(element.addEventListener){
+					element.addEventListener(type,handler,false);
+				}else if(element.attachEvent){
+					element.attachEvent("on"+type,handler);
+				}else{
+					element["on"+type]=handler;
+				}
+			},
+			getEvent:function(event){
+				return event ? event: window.event;
+			},
+			getTarget:function(event){
+				return event.target || event.srcElement;
+			},
+			preventDefault:function(event){
+				if(event.preventDefault){
+					event.preventDefault();
+				}else{
+					event.returnvalue = false;
+				}
+			},
+			removeHandler:function(element,type,handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type,handler,false);
+				}else if(element.detachEvent){
+					element.detachEvent(type,handler,false);
+				}else{
+					element["on"+type] = null;
+				}
+			},
+			stopPropagation:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();
+				}else{
+					event.cancleBubble = true;
+				}
+			}
+		};
+		// 鼠标事件 客户端坐标
+		// var div = document.getElementById('mydiv');
+		// EventUtil.addHandler(div,"click",function(event){
+		// 	event = EventUtil.getEvent(event);
+		// 	alert('位置坐标：'+'横'+event.clientX+'px,纵'+event.clientY+'px');
+		// });
+		//鼠标事件页面坐标
+		var div = document.getElementById('mydiv');
+		EventUtil.addHandler(div,"click",function(event){
+			event = EventUtil.getEvent(event);
+			alert(event.pageX+','+event.pageY);
+		});
+	</script>
+</body>
+</html>

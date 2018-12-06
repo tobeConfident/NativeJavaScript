@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#txt2{
+			font:12px "Microsoft YaHei";
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="txt" value=""/>
+	<input type="button" value="检测" id="btn" />
+	<div id="txt2"></div>
+	<script>
+		var oTxt = document.getElementById('txt');
+		var oBtn = document.getElementById('btn');
+		var oTxt2 = document.getElementById('txt2');
+		oTxt.onkeyup = function(){
+			var val = oTxt.value;
+			// var reg = /[1-9]\d{17}/g; 
+			var reg = /^[1-9]\d{5}[1-2]\d{3}[0-1][1-9][0-3][0-9]\d{3}[0-9|x]$/g;
+			var ma = [7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2];
+			var crr = [];
+			var sum = 0;
+			if(reg.test(val)){
+				for(var i=0;i<17;i++){
+					crr[i] = val[i]*ma[i];
+				}
+				for(var j=0;j<crr.length;j++){
+					sum+=crr[j];
+				}
+				var mod = sum%11;
+				switch(mod){
+					case 0:
+						if(val[17]==1){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 1:
+						if(val[17]==0){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 2:
+						if(val[17]=='x'){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 3:
+						if(val[17]==9){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 4:
+						if(val[17]==8){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 5:
+						if(val[17]==7){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 6:
+						if(val[17]==6){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 7:
+						if(val[17]==5){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 8:
+						if(val[17]==4){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 9:
+						if(val[17]==3){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+					case 10:
+						if(val[17]==2){
+							oTxt2.innerHTML='符合';
+						}else{
+							oTxt2.innerHTML='不符合';
+						}
+					break;
+				}	
+			}else{
+				oTxt2.innerHTML='不符合';
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.radio input{
+			display:inline-block;
+			margin:10px;
+		}
+		.radio{
+			width:200px;
+			height:250px;
+			background:gray;
+		}
+		#text{
+			background:red;
+		}
+	</style>
+</head>
+<body>
+	<div class="radio">
+		<input type="radio" name="pass" value="11111" />11<br>
+		<input type="radio" name="pass" value="22222" />22<br>
+		<input type="radio" name="pass" value="33333" />33<br>
+		<input type="radio" name="pass" value="44444" />44<br>
+		<input type="radio" name="pass" value="55555" />55<br>
+		<input type="radio" name="pass" value="66666" />66<br>
+		<input type="radio" name="pass" value="77777" />77<br>
+	</div>
+	<div id="text"></div>
+	<script>
+		var inp = $('input');
+		var txt = document.getElementById('text');
+		for(let i=0;i<inp.length;i++){
+			inp[i].onclick = function(){
+				var val = inp[i].value;
+				txt.innerHTML = val;
+			}
+		}
+		function $(dom){
+			return document.getElementsByTagName(dom);
+		}
+	</script>
+</body>
+</html>

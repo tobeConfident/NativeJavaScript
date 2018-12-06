@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function createXHR(){
+			if(typeof XMLHttpRequest != 'undefined'){
+				return new XMLHttpRequest();
+			}else if(typeof ActiveXobject != 'undefined'){
+				if(typeof arguments.callee.activeXstring != 'string'){
+					var versions = ['MSXML2.XMLHttp.6.0','MSXML2.XMLHttp.3.0','MSXML2.XMLHttp'];
+					var len = versions.length;
+					for(var i=0;i<len;i++){
+						try{
+							newActiveXobject(versions[i]);
+							arguments.callee.activeXstring = versions[i];
+							break;
+						}
+						catch(ex){
+							//跳过
+						}
+					}
+				}else{
+					throw new Error('no xhr object availble');
+				}
+			}
+		}
+		var xhr = createXHR();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if((xhr.status>=200 && xhr.status<300) || xhr.status == 304){
+					document.write(xhr.responseText);
+				}else{
+					alert("error"+xhr.status);
+				}
+			}
+		};
+		xhr.open('get','json.json',true);
+		xhr.send(null);
+	</script>
+</body>
+</html>

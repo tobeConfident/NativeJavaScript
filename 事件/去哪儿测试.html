@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// function say(){
+		// 	alert(this.name);
+		// }
+		// var name = 'name1';
+		// var person = {
+		// 	name:'name2',
+		// 	say:say
+		// }
+		// person.say();
+		// say();
+		// var x=0;
+
+		// var f=function(){
+		// 	x=1;
+		// }
+		// f();
+		// alert(x);
+		// function f(){
+		// 	x=2;
+		// }
+		// f();
+		// alert(x);
+		// var brr =[];
+		// var url = 'http://www.qunar.com/?a=1&b=2&city=%E5%8C%97%E4%BA%AC';
+		// var url1 = url.split('?');
+		// var url2 = url1[1];
+		// var arr = url2.split('&');
+		// for(var i=0;i<arr.length;i++){
+		// 	var arr1 = arr[i].split('=');
+		// 	brr.push(arr1[1]);
+		// }
+		// var crr = {
+		// 	'a':brr[0],
+		// 	'b':brr[1],
+		// 	'city':decodeURIComponent(brr[2])
+		// };
+		// console.log(crr);
+		// function f(){
+		// 	x=2;
+		// }
+		// f();
+		// console.log(x);
+		function formatDate(date,format){
+			var date = new Date();
+			var yyy = date.getFullYear();
+			var mm = date.getMonth()+1;
+			var dd = date.getDate();
+			var format = yyy +'-'+mm+'-'+dd
+			// var yyy = date1/(365*24*3600*1000);
+			console.log(format);
+		}
+		formatDate();
+	</script>
+</body>
+</html>

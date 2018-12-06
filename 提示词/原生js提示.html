@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#list{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" value='' id="inputlist" />
+	<ul id="list" class="list1">
+	</ul>
+	<script>
+		var iList = document.getElementById('inputlist');
+		var list = document.getElementById('list');
+		var arr = ['aaa','bbb','aa'];
+		var brr = [];
+		iList.onkeyup = function(){
+			return new Promise(function(){
+				var words = iList.value; //获取input值
+				if(words!=''){ //值非空
+					var reg = new RegExp(`${words}`,'g'); //创建正则表达式
+					// function m1(arr){
+					// 	for(var i=0;i<this.arr.length;i++){ 
+					// 		return reg.test(this.arr[i])==true;
+					// 	}
+					// }
+					// function m2(arr){
+					// 	for(var i=0;i<this.arr.length;i++){ 
+					// 		return reg.test(this.arr[i])==false;
+					// 	}
+					// }
+					// if(arr.some(m1)){
+					// 	brr.push(arr[i])
+					// }else if(arr.every(m2)){
+					// 	brr.length=0;
+					// }
+					for(var i=0;i<arr.length;i++){  //符合要求的添加至brr数组
+						if(reg.test(arr[i])){
+							var data = arr[i];
+							if(brr.indexOf(data) == -1){
+								brr.push(data);
+							}
+						}
+					}
+					for(var j=0;j<brr.length;j++){
+						list.style.display = 'block';
+						if(list.childNodes.length<=brr.length){
+							var dom = document.createElement('li');
+							var dom1 = list.appendChild(dom);
+							dom1.innerHTML=brr[j];	
+						}
+					}
+				}else{
+					var childs=list.childNodes;  
+					for(var i=childs.length-1;i>=0;i--){  
+						list.removeChild(childs.item(i));  
+					}  
+					brr.length = 0;
+				}
+				
+			}).then(function(result){
+				alert('成功'+result);
+			}).catch(function(reason){
+				alert('失败'+reason);
+			});		
+		}
+	</script>
+</body>
+</html>

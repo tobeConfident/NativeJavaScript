@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = ['81','82','83','48','45','84','85','82','865'];
+		var reg = /^8\d/g;
+		var brr = [];
+
+		for(var i=0;i<arr.length;i++){
+			// if(reg.test(arr[i])){
+			// 	brr.push(arr[i]);
+			// }	
+			if(arr[i].match(reg)){
+				brr.push(arr[i]);
+			}
+		}
+		// var t;
+		// for(var i=0;i<brr.length;i++){
+		// 	for(var j=i+1;j<brr.length;j++){
+		// 		t=brr[i];
+		// 		brr[i]=brr[j];
+		// 		brr[j]=t;
+		// 	}
+		// }
+		brr.sort(function(a,b){
+			return a-b;  //注意这里，前几次笔试似乎都错掉了，不用去比较它俩的大小
+		});
+		console.log(brr);
+	</script>
+</body>
+</html>

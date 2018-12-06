@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//非严格模式下，函数内部可修改传入值
+		function func(a){
+			arguments[0]=55;
+			console.log(a);
+		}
+		func(10);
+	</script>
+</body>
+</html>

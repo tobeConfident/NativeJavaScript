@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#radio input{
+			display:inline-block;
+			margin:10px;
+		}
+		#radio{
+			width:200px;
+			height:250px;
+			background:gray;
+			display:none;
+		}
+		#text{
+			/*display:block;*/
+			border:1px solid #000;
+			background:red;
+			width:60px;
+			height:30px;
+			line-height:30px;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<button id="text">请选择</button>
+	<div id="radio">
+		<input type="radio" name="pass" value="11111" />11<br>
+		<input type="radio" name="pass" value="22222" />22<br>
+		<input type="radio" name="pass" value="33333" />33<br>
+		<input type="radio" name="pass" value="44444" />44<br>
+		<input type="radio" name="pass" value="55555" />55<br>
+		<input type="radio" name="pass" value="66666" />66<br>
+		<input type="radio" name="pass" value="77777" />77<br>
+	</div>
+	
+	<script>
+		var inp = $('input');
+		var txt = document.getElementById('text');
+		var radio = document.getElementById('radio');
+		txt.onclick = function(){
+			txt.style.display = 'none';
+			radio.style.display = 'block';
+		}
+		for(let i=0;i<inp.length;i++){
+			inp[i].onclick = function(){
+				var val = inp[i].value;
+				txt.innerHTML = val;
+				radio.style.display = "none";
+				txt.style.display = "block";
+			}
+		}
+		function $(dom){
+			return document.getElementsByTagName(dom);
+		}
+	</script>
+</body>
+</html>

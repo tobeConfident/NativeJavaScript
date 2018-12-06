@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function fb2(n,res1 =1,res2 = 1){
+		    if(n <= 2){
+		        return res2;   
+		    }else{
+		        return fb2(n-1,res2,res1 + res2);
+		        
+		    }
+		}
+		console.log(fb2(5,res1 =1,res2 = 1));
+	</script>
+</body>
+</html>

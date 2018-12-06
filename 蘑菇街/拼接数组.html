@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function arrMerge(){
+			var res = arguments[0]; //准备一个空数组
+			for(var i=0;i<arguments.length;i++){
+				var res1 = res.concat(arguments[i]); //拼接
+			}
+			return res1; 
+		}
+		console.log(arrMerge([1,2,3],[4,5,3,6,7]));
+	</script>
+</body>
+</html>

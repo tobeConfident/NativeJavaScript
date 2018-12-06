@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body onload="change()">
+	<select name="" id="pro" onchange = "change()">
+		<option value="请选择省">请选择省</option>
+		<option value="辽宁">辽宁</option>
+		<option value="北京">北京</option>
+	</select>
+	<select name="" id="city" onchange = "change1()">
+		<option value="请选择市">请选择市</option>
+	</select>
+	<select name="" id="county">
+		<option value="请选择区县">请选择区县</option>
+	</select>
+	<script>
+		var province = {
+			'请选择省':{'请选择市':['请选择区县']},
+			'北京':{'北京市':['海淀区']},
+			'辽宁':{'沈阳市':['和平区','二道区'],'锦州市':['太和区','古塔区']},
+			'上海':{'上海市':['浦东区']}
+		};
+		function change(){
+			var pro = $('pro'); //一级菜单
+			var city = $('city'); //二级菜单
+			var county = $('county'); //三级菜单
+			var val = pro.options[pro.selectedIndex].value;  //被选中的一级菜单的值 
+			var json = province[val];  //一级菜单下二级菜单的json数据
+			while (city.options.length || county.options.length){
+    			city.remove(0);            //清空二、三级菜单
+    			county.remove(0);
+	  		}
+	  		var arr = [];
+			for(var key in json){
+				var citys = key;
+				var countys = json[key];
+				arr.push(citys);
+			}
+			for(var i=0;i<arr.length;i++){
+				var ci = new Option(arr[i],i);
+				city.options.add(ci);
+				city.options[i].value = arr[i];
+			}
+			var val2 = city.options[city.selectedIndex].value;
+			var val3 = json[val2];
+			for(var j=0;j<val3.length;j++){
+				var co = new Option(val3[j],j);
+				county.options.add(co);
+			}
+		}
+		function change1(){
+			var pro = $('pro'); //一级菜单
+			var city = $('city'); //二级菜单
+			var county = $('county'); //三级菜单
+			var val = pro.options[pro.selectedIndex].value;  //被选中的一级菜单的值 
+			var json = province[val];  //一级菜单下二级菜单的json数据
+			var val2 = city.options[city.selectedIndex].value;
+			var val3 = json[val2];
+			while(county.options.length){
+				county.remove(0);
+			}
+			for(var j=0;j<val3.length;j++){
+				var co = new Option(val3[j],j);
+				county.options.add(co);
+			}
+		}
+		function $(dom){
+			return document.getElementById(dom);
+		}
+	</script>
+</body>
+</html>

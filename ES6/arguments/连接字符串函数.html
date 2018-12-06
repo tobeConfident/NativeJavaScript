@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>连接字符串函数</title>
+</head>
+<body>
+	<script>
+		function argu(a){
+			var args = Array.prototype.slice.call(arguments,1); //截取
+			return args.join(a);
+		}
+		console.log(argu(", ", "red", "orange", "blue"));
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function argu(){
+			var len = arguments.length;
+			var sum=0;
+			for(var i=0;i<len;i++){
+				sum+=arguments[i];
+			}
+			return sum;
+		}
+		console.log(argu(1,3,121,2,3));
+		console.log(argu(1));
+
+	</script>
+</body>
+</html>

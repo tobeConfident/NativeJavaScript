@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function list(type) {
+			var result = "<" + type + "l><li>";
+			var args = Array.prototype.slice.call(arguments, 1);
+			result += args.join("</li><li>");
+			result += "</li></" + type + "l>"; // end list
+
+			var body = document.getElementsByTagName('body');
+			body.innerHTML = result;
+			return body; 
+		}
+		// var listHTML = list("u", "One", "Two", "Three");
+		console.log(list("u", "One", "Two", "Three"));
+	</script>
+</body>
+</html>

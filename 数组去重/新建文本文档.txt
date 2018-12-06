@@ -1,0 +1,7 @@
+// È¥ÖØ
+const result1 = [...new Set(arr)];
+const result2 = arr.filter((item, index, self) => self.indexOf(item) === index);
+
+const obj = {};
+const result3 = arr.forEach(item => obj[item] = true);
+console.log(Object.keys(obj).map(item => Number(item)))

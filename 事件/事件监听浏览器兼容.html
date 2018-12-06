@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#myBtn{
+			width:100px;
+			height:100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id = "myBtn"></div>
+	<!-- <form action="###" method="post">
+		<input type="text" name="username" value='' id="myBtn">
+		<input type="button" value="click me" onclick='alert(username.value)'>
+	</form> -->
+	<script>
+		var EventUtil = {
+			addHandler:function(element,type,handler){
+				if(element.addEventListener){
+					element.addEventListener(type,handler,false); //事件冒泡阶段处理 false
+				}else if(element.attachEvent){
+					element.attachEvent("on"+type,handler); //无需使用false
+				}else{
+					element["on" + type] = handler;
+				}
+			},
+			removeHandler:function(element,type,handler){
+				if(element.removeEventListener){
+					element.addEventListener(type,handler,false);
+				}else if(element.detachEvent){
+					element.attachEvent("on"+type,handler);
+				}else{
+					element["on"+type] = null;
+				}
+			}
+		};
+
+		var btn = document.getElementById('myBtn');
+		var handler = function(){
+			alert(1);
+		};
+		EventUtil.addHandler(btn,"click",handler);
+	</script>
+</body>
+</html>

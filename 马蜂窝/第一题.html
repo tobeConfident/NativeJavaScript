@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var a = "aabbbcc";
+		var b = 'aa,bB,cc';
+	
+		var c = b.split(',');
+
+		var arr = [];		
+		var brr = [];
+		for(let i=0;i<c.length;i++){
+			brr.push(c[i]);
+			var reg = new RegExp(`${c[i]}`,'g'); 
+			if(reg.test(a)){
+				arr.push(c[i]);
+			}
+		}
+		if(arr == brr){
+			console.log(true);
+		}else{
+			console.log(false);
+		}
+	</script>
+</body>
+</html>

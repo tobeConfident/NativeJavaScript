@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	
+		n = 6;
+		m = 3;
+		var arr = [1,2,3,4,5,6];
+		
+		var brr = [];
+		for(var i=0;i<arr.length;i=i+2){
+			for(var j=0;j<m;j++){
+				var sum = arr[i]+arr[i+1];
+			    brr.push(sum);
+			}
+		   
+		}
+		brr.sort(function(a,b){
+		    return a-b;
+		});
+		console.log(brr[0]);
+
+	</script>
+</body>
+</html>

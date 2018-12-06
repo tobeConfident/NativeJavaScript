@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body id="body">
+	<input type="text" />
+	<img />
+	<a href=""></a>
+	<ul>
+		<li>eajfsgfbcesj</li>
+		<li>eajfsgfbcesj</li>
+		<li>eajfsgfbcesj</li>
+		<li>eajfsgfbcesj</li>
+		<li>eajfsgfbcesj</li>
+	</ul>
+	<div></div>
+	<script>
+		var body = document.getElementsByTagName('body')[0]; //获取body下所有代码
+		var body1 = body.innerHTML; //转换为字符串类型数据
+		console.log(body1);
+		var reg =  /<[a-zA-Z][^>]+>/g; //创建正则表达式
+		console.log(body1.match(reg)); //匹配
+	</script>
+</body>
+</html>

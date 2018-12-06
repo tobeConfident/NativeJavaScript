@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		while(line == read_line()){
+    var lines = line.split('');
+    var func = 3; //代金券种类
+    console.log(func);
+    var pay_money = {
+			money:readInt(lines[0]),
+			mm:readInt(lines[2]),
+			mmm:readInt(lines[3]),
+			m1:function(){
+				if(this.money>=25){
+		        	var pay = this.money - 5 +this.mm+this.mmm;
+		        	
+		   		}else{
+		   			var pay = this.money+this.mm+this.mmm;
+		   		}	
+		   		print(pay);
+		   	},
+		   	m2:function(){
+				if(this.money>=50){
+		        	var pay = this.money - 10 +this.mm+this.mmm;
+		        	
+		   		}else{
+		   			var pay = this.money+this.mm+this.mmm;
+		   		}
+		   		print(pay);
+		   	},
+		   	m3:function(){
+				if(this.money>=75){
+		        	var pay = this.money - 15 +this.mm+this.mmm;	
+		   		}else{
+		   			var pay = this.money+this.mm+this.mmm;
+		   		}
+		   		print(pay);
+		   	},
+		   	m4:function(){
+				if(this.money>=100){
+		        	var pay = this.money - 20 +this.mm+this.mmm;	
+		   		}else{
+		   			var pay = this.money+this.mm+this.mmm;
+		   		}
+		   		print(pay);
+		   	}
+		}
+		switch(func){
+			case 1:
+				pay_money.m1();
+			break;
+			case 2:
+				pay_money.m2();
+			break;
+			case 3:
+				pay_money.m3();
+			break;
+			case 4:
+				pay_money.m4();
+			break;
+			default:
+				console.log('error');
+				break;
+		}
+    	// if(func == 1){
+     //        pay_money.m1();
+     //    }else if( func ==2){
+     //        pay_money.m2();
+     //    }else if(func==3){
+     //        pay_money.m3();
+     //    }else if(func==4){
+     //        pay_money.m4();
+     //    }
+}
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="mydiv">click me!</div>
+	<ul id="mymenu" style="position:absolute;visibility:hidden;background-color:silver">
+		<li>百度</li>
+		<li>雅虎</li>
+		<li>搜狗</li>
+	</ul>
+	<script>
+		var EventUtil = {
+			addHandler:function(element,type,handler){
+				if(element.addEventListener){
+					element.addEventListener(type,handler,false);
+				}else if(element.attachEvent){
+					element.attachEvent("on"+type,handler);
+				}else{
+					element["on"+type]=handler;
+				}
+			},
+			getEvent:function(event){
+				return event ? event: window.event;
+			},
+			getTarget:function(event){
+				return event.target || event.srcElement;
+			},
+			preventDefault:function(event){
+				if(event.preventDefault){
+					event.preventDefault();
+				}else{
+					event.returnvalue = false;
+				}
+			},
+			removeHandler:function(element,type,handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type,handler,false);
+				}else if(element.detachEvent){
+					element.detachEvent(type,handler,false);
+				}else{
+					element["on"+type] = null;
+				}
+			},
+			stopPropagation:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();
+				}else{
+					event.cancleBubble = true;
+				}
+			},
+			getCharCode:function(event){
+				if(typeof event.charCode == 'number'){
+					return event.charCode;
+				}else{
+					return event.keyCode;
+				}
+			}
+		};
+		EventUtil.addHandler(window,'load',function(event){
+			var div = document.getElementById('mydiv');
+
+			EventUtil.addHandler(div,"contextmenu",function(event){ //右键单击
+				event = EventUtil.getEvent(event);
+				EventUtil.preventDefault(event);
+
+				var menu = document.getElementById('mymenu');
+				menu.style.left = event.clientX+'px';;
+				menu.style.top = event.clientY +'px';
+				menu.style.visibility = 'visible';
+			});
+			EventUtil.addHandler(document,"click",function(event){
+				document.getElementById('mymenu').style.visibility="hidden";
+			});
+		});
+	</script>
+</body>
+</html>

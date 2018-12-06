@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			padding:0;
+		}
+		.content{
+			display: box;
+			display: -moz-box;
+			display: -o-box;
+			display: -webkit-box;
+		}
+		.left{
+			width:100px;
+			height:500px;
+			background: red;
+		}
+		.right{
+			box-flex:1.0;
+			-webkit-box-flex:1.0;
+			-o-box-flex:1.0;
+			-moz-box-flex:1.0;
+			height:500px;
+			background:lightblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="left">左</div>
+		<div class="right">自适应</div>
+	</div>
+</body>
+</html>
